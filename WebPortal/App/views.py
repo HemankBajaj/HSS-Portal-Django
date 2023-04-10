@@ -16,9 +16,25 @@ from .models import Slot, Order
 # Create your views here.
 @login_required(login_url='login')
 def index(request):    
+    pendingOrders = Order.objects.filter(exptStatus = "completed")
+    # print(p)
     return render(request, "index.html", locals())
 
-# def bookSlot(request, pk):
+@login_required(login_url='login')
+def acceptRequest(request , pk):
+    order = get_object_or_404(Order, id=pk)
+    if request.method == "POST":
+        order.exptStatus = "paid"
+        order.save()
+    return redirect("/")
+        
+@login_required(login_url='login')
+def declineRequest(request , pk):
+    order = get_object_or_404(Order, id=pk)
+    if request.method == "POST":
+        order.exptStatus = "rejected"
+        order.save()
+    return redirect("/")
 
 
 def signUp(request):

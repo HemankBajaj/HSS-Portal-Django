@@ -16,6 +16,8 @@ urlpatterns = [
     path('unbookSlot/<int:pk>', views.unbookSlot, name='unbookSlot'),
     path('mySlots', views.mySlots, name='mySlots'), 
     path('requestCompletion/<int:pk>', views.requestCompletion, name='requestCompletion'),
+    path('acceptRequest/<int:pk>', views.acceptRequest, name='acceptRequest'),
+    path('declineRequest/<int:pk>', views.declineRequest, name='declineRequest'),
 ]
 
 
