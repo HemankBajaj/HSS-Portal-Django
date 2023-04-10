@@ -13,7 +13,9 @@ urlpatterns = [
     path('deleteSlot/<int:pk>', views.deleteSlot, name='deleteSlot'),
     path('updateSlot/<int:pk>', views.updateSlot, name='updateSlot'),
     path('bookSlot/<int:pk>', views.bookSlot, name='bookSlot'),
-    # path('')
+    path('unbookSlot/<int:pk>', views.unbookSlot, name='unbookSlot'),
+    path('mySlots', views.mySlots, name='mySlots'), 
+    path('requestCompletion/<int:pk>', views.requestCompletion, name='requestCompletion'),
 ]
 
 

@@ -23,6 +23,7 @@ class Slot(models.Model):
 class Order(models.Model):
     status_choice= [
         ('pending', 'Pending'),
+        ('completed', 'Completed'), 
         ('paid ', 'Paid '),
         ('rejected', 'Rejected')
     ]

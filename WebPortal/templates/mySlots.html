@@ -1,17 +1,9 @@
-{% extends 'base.html' %}
-{% block title %}View Slots{% endblock title %}
-
-
-
+{% extends 'base.html' %} {% block title %}My Slots{% endblock title %} 
 
 {% block body %}
-
-<div align="center">
-<h1> Upcoming Experiments</h1>
-</div>
-
+<h1 align="center">Upcoming Experiments</h1>
 <div class="accordion" id="accordionExample">
-    {% for slot in slots %}
+    {% for slot in upcomingSlots %}
 
     <div class="accordion-item">
       <h2 class="accordion-header">
@@ -31,7 +23,7 @@
           {% endif %}
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
             {% if slot.numberOfSeats > 0%}
-            {% if slot not in activeSlots %} 
+            {% if slot not in upcomingSlots %} 
             <form action="bookSlot/{{slot.id}}" method="POST" id="bookSlot">
                 {% csrf_token %}
                 <input type="submit" value = "Book Slot" class="btn btn-success">
@@ -53,16 +45,66 @@
                 <input type="submit" value = "Delete Slot" class="btn btn-danger">
             </form> 
             {% endif %}
-            {% if slot in activeSlots %} Booked ! YAY!{% endif %}
+            {% comment %} {% if slot in activeSlots %} Booked ! YAY!{% endif %} {% endcomment %}
           </div>
           
         </div>
       </div>
     </div>
-    {%endfor %}
-
-    
-        
+    {%endfor %}    
 </div>
 
+<h1 align="center">Past Experiments</h1>
+<table class="table table-hover table-bordered">
+    <thead>
+
+  <tr class="table-dark">
+
+    <th>Experiment Title</th>
+    <th>Experiment Date</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+</thead>
+<tbody>
+
+  {% for order in pastOrders %} 
+    {% if order.exptStatus == "pending" %}
+    <tr class="table-secondary">
+        <td>{{order.slot.exptTitle}}</td>
+        <td>{{order.slot.exptDate}}</td>
+        <td>{{order.exptStatus}}</td>
+        <td>
+            <form action = "requestCompletion/{{order.id}}" method="POST" id="completeSlot" name="update">
+                {% csrf_token %}
+                <input type="submit" value = "Initiate Payment Request" class="btn btn-warning">
+            </form> 
+        </td>
+    </tr>
+    {% elif order.exptStatus == "completed"%}
+    <tr class="table-secondary">
+        <td>{{order.slot.exptTitle}}</td>
+        <td>{{order.slot.exptDate}}</td>
+        <td>{{order.status}}</td>
+        <td>Request Initiated</td>
+    </tr>
+    {% elif order.exptStatus == "paid"%}
+    <tr class="table-success">
+        <td>{{order.slot.exptTitle}}</td>
+        <td>{{order.slot.exptDate}}</td>
+        <td>{{order.status}}</td>
+        <td>PAID</td>
+    </tr>
+    {% else %} 
+    <tr class="table-danger">
+        <td>{{order.slot.exptTitle}}</td>
+        <td>{{order.slot.exptDate}}</td>
+        <td>{{order.status}}</td>
+        <td>Request REJECTED</td>
+    </tr>
+    {% endif %} 
+  {% endfor %}
+</tbody>
+
+</table>
 {%endblock body%}
