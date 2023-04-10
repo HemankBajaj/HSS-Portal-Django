@@ -23,13 +23,15 @@ class Slot(models.Model):
 class Order(models.Model):
     status_choice= [
         ('pending', 'Pending'),
-        ('completed', 'Completed'),
         ('paid ', 'Paid '),
+        ('rejected', 'Rejected')
     ]
 
     candidate = models.ForeignKey(User, on_delete=models.CASCADE)
     slot = models.ForeignKey(Slot, on_delete=models.CASCADE)
-    dateBooked = models.DateField(auto_now_add=True)
+    dateBooked = models.DateField()
     exptStatus = models.CharField(max_length=30,choices=status_choice,default='pending')
-    
+    isBooked = models.BooleanField(default = False)
+
+
 

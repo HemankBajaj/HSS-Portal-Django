@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from .models import Slot
+from .models import Slot, Order
 
 
 
@@ -112,3 +112,9 @@ class SlotForm(forms.ModelForm):
     class Meta:
         model = Slot
         exclude=['candidateList']
+
+
+class OrderRequestForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        exclude = ['candidate', 'slot', 'dateBooked', 'exptStatus', 'isBooked']

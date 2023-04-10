@@ -31,7 +31,8 @@
           {% endif %}
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
             {% if slot.numberOfSeats > 0%}
-            <form action="" method="POST" id="bookSlot">
+            <form action="bookSlot/{{slot.id}}" method="POST" id="bookSlot">
+                {% csrf_token %}
                 <input type="submit" value = "Book Slot" class="btn btn-success">
             </form> 
             {% endif %}
@@ -44,9 +45,8 @@
                 {% csrf_token %}
                 <input type="submit" value = "Delete Slot" class="btn btn-danger">
             </form> 
-            
-            
             {% endif %}
+            {% comment %} {% if slot in orders%} Booked ! YAY!{% endif %} {% endcomment %}
           </div>
           
         </div>

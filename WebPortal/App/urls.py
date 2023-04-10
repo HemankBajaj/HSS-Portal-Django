@@ -9,9 +9,11 @@ urlpatterns = [
     path('signup', views.signUp, name='signup'),
     path('addSlot', views.addSlot, name = 'addSlot'), 
     path('viewSlots', views.viewAvailableSlots, name = 'viewSlots' ), 
-    path('viewSlot/<int:pk>', views.viewSlot, name='viewSlot'),
+    # path('viewSlot/<int:pk>', views.viewSlot, name='viewSlot'),
     path('deleteSlot/<int:pk>', views.deleteSlot, name='deleteSlot'),
     path('updateSlot/<int:pk>', views.updateSlot, name='updateSlot'),
+    path('bookSlot/<int:pk>', views.bookSlot, name='bookSlot'),
+    # path('')
 ]
 
 
