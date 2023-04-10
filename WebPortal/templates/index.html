@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    Welcome to my website
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block body %}
+  {% if user.is_authenticated %}
+  <h1>Welcome <b><u>{{user.username}}</u></b></h1><br>
+  <h3>Your role is 
+  {% if user.is_staff %}Staff{% else %}User{% endif %}</h3>
+  {% endif %}
+{% endblock body %}

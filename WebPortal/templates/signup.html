@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+<body>
+
+  <div class="container">
+    <br/>
+    <br/>
+    <form method = "POST" action="signup" >
+        {%csrf_token%}
+      <div class="form-group">
+        <label for="inputName">Name</label><br/>
+        {% comment %} <input required type="text" class="form-control" id="inputName" placeholder="Enter your name"><br/> {% endcomment %}
+        {{form.username}}
+      </div>
+      <div class="form-group">
+        <label for="inputEmail">Email address</label><br/>
+        {% comment %} <input type="email" class="form-control" id="inputEmail" placeholder="Enter email"><br/> {% endcomment %}
+        {{form.email}}
+      </div>
+      <div class="form-group">
+        <label for="inputPassword">Password</label><br/>
+        {% comment %} <input type="password" class="form-control" id="inputPassword" placeholder="Password"><br/> {% endcomment %}
+        {{form.password1}}
+      </div>
+      <div class="form-group">
+        <label for="inputConfirmPassword">Confirm Password</label><br/>
+        {% comment %} <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password"><br/> {% endcomment %}
+        {{form.password2}}
+      </div>
+      <button type="submit" class="btn btn-primary" >Sign Up</button>
+    </form>
+  </div>
+
+</body>
+</html>
