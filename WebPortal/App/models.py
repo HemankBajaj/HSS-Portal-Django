@@ -33,21 +33,3 @@ class Order(models.Model):
     exptStatus = models.CharField(max_length=30,choices=status_choice,default='pending')
     
 
-# class TestModel(models.Model):
-#     text  = models.CharField(max_length=50)
-
-
-
-    
-
-# class Booking(models.Model):
-#     status_choice= [
-#         ('pending', 'Pending'),
-#         ('completed', 'Completed'),
-#         ('paid ', 'Paid '),
-#     ]
-
-#     candidate = models.ForeignKey(User, on_delete=models.CASCADE)
-#     # slot = models.ForeignKey(Slot, on_delete=models.CASCADE)
-#     dateBooked = models.DateField(auto_now_add=True)
-#     exptStatus = models.CharField(max_length=30,choices=status_choice,default='pending')

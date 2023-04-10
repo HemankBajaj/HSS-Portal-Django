@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}{{slot.exptTitle}}{% endblock title %}
+
+{% block body %}
+<ul>
+    <div>
+      Title: {{slot.exptTitle}}<br>
+      Description : {{slot.exptDesc}}<br> 
+      Date of Experiment: {{slot.exptDate}}<br>
+      Start Time: {{slot.startTime}}<br>
+      End Time: {{slot.endTime}}<br>
+      <h4> Seats Left : {{slot.numberOfSeats}} <h4> <br> 
+      {%if slot.numberOfSeats > 0%}
+        {%else%} 
+        <h4> Slot Filled <h4> <br> 
+      {%endif%}
+    </div>
+</ul>
+
+{% if user.is_staff %}
+<h3> <b> Update Slot</b></h3>
+<form action="#viewSlot/{{slot.id}}" method="POST">
+ {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" name="update" value="Update Slot">
+</form><br>
+<form action="#viewSlot/{{slot.id}}" method="POST" name="delete_slot">
+    {% csrf_token %}
+    <input type="submit" value="Delete Slot">
+</form>
+{%endif%}
+
+
+
+{%endblock body%}

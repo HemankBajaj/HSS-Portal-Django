@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from .models import Slot
 
 
 
@@ -62,3 +63,52 @@ class UserLoginForm(AuthenticationForm):
         fields = ["username", "password"]
 
     
+class SlotForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["exptTitle"].widget.attrs.update({
+            "required" : "", 
+            "type":"text", 
+            "class":"form-control" ,
+            "id":"exptTitle",
+            "placeholder":"Enter Experiment Title"
+        })
+        self.fields["exptDesc"].widget.attrs.update({
+            "required" : "", 
+            "type":"text", 
+            "class":"form-control" ,
+            "id":"exptDesc",
+            "placeholder":"Enter Experiment Description"
+        })
+        self.fields["exptDate"].widget.attrs.update({
+            "required" : "", 
+            "type":"date", 
+            "class":"form-control" ,
+            "id":"exptDate",
+            "placeholder":"Enter Date"
+        })
+        self.fields["startTime"].widget.attrs.update({
+            "required" : "", 
+            "type":"time", 
+            "class":"form-control" ,
+            "id":"startTime",
+            "placeholder":"Enter start time", 
+        })
+        self.fields["endTime"].widget.attrs.update({
+            "required" : "", 
+            "type":"time", 
+            "class":"form-control" ,
+            "id":"endTime",
+            "placeholder":"Enter end time"
+        })
+        self.fields["numberOfSeats"].widget.attrs.update({
+            "required" : "", 
+            "type":"number", 
+            "class":"form-control" ,
+            "id":"numberOfSeats",
+            "placeholder":"Enter number of seats"
+        })
+
+    class Meta:
+        model = Slot
+        exclude=['candidateList']
