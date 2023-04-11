@@ -5,9 +5,11 @@
 
 
 {% block body %}
-
-<div align="center">
-<h1> Upcoming Experiments</h1>
+<div class="container">
+<div>
+  <br/>
+    <h3 class="text-center"> Upcoming Experiments</h3>
+  <br/>
 </div>
 
 <div class="accordion" id="accordionExample">
@@ -39,8 +41,8 @@
             {% else %}
             <form action="unbookSlot/{{slot.id}}" method="POST" id="bookSlot">
                 {% csrf_token %}
-                <input type="submit" value = "unBook Slot" class="btn btn-danger">
-            </form> 
+                <input type="submit" value = "Unbook Slot" class="btn btn-danger">
+            </form>
             {% endif %}
             {% endif %}
             {% if user.is_staff %}
@@ -55,14 +57,24 @@
             {% endif %}
             {% if slot in activeSlots %} Booked ! YAY!{% endif %}
           </div>
-          
+          <style>
+            #bookSlot{
+              margin-right: 1.2rem;
+            }
+            #editSlot{
+              margin-right: 1.2rem;
+            }
+            #deleteSlot{
+              margin-right: 1.2rem;
+            }
+          </style>
         </div>
-      </div>
+    </div>
     </div>
     {%endfor %}
 
     
         
 </div>
-
+</div>
 {%endblock body%}
