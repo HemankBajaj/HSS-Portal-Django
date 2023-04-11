@@ -3,35 +3,45 @@
 {% block body %}
 
 {% if user.is_staff %}
+<div class="container">
+  <br/>
 <h3><b> Update Slot</b></h3>
 <form method="POST" action="#updateSlot/{{slot.id}}">
   {% csrf_token %}
+  <br/>
   <div class="form-group">
     <label for="exptTitle">Title For The Experiment</label><br />
     {{form.exptTitle}} 
   </div>
+  <br/>
   <div class="form-group">
     <label for="exptDesc"> Description </label><br />
     {{form.exptDesc}} 
   </div>
+  <br/>
   <div class="form-group">
     <label for="exptDate"> Date Of the Experiment (YYYY-MM-DD)</label><br />
     {{form.exptDate}} 
   </div>
+  <br/>
   <div class="form-group">
     <label for="startTime"> Start Time (HH:MM:SS)</label><br />
     {{form.startTime}} 
   </div>
+  <br/>
   <div class="form-group">
     <label for=""> End Time (HH:MM:SS)</label><br />
     {{form.endTime}} 
   </div>
+  <br/>
   <div class="form-group">
     <label for="numberOfSeats"> Number Of Seats </label><br />
     {{form.numberOfSeats}} 
   </div>
+  <br/>
   <button type="submit" class="btn btn-primary btn-block">Edit Slot</button>
 </form>
+</div>
 {%endif%}
 
 {%endblock body%}

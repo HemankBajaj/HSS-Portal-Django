@@ -3,40 +3,51 @@
 
 {% block body %}
 {% if user.is_staff %}
-<h1> Hello Staff Member ....Add a new Slot </h1>
 <form method="POST" action="addSlot">
 {% csrf_token %}
+          <div class="container">
+            <br/>
+              <h3>Add New Slot</h3>
+              <br/>
               <div class="form-group">
                   <label for="exptTitle">Title For The Experiment</label><br/>
                     {{form.exptTitle}}
                   {% comment %} <input type="text" class="form-control" id="texg" placeholder="Enter Username"><br/> {% endcomment %}
               </div>
+              <br/>
               <div class="form-group">
                   <label for="exptDesc"> Description </label><br/>
                     {{form.exptDesc}}
                   {% comment %} <input type="password" class="form-control" id="password" placeholder="Password"><br/> {% endcomment %}
               </div>
+              <br/>
               <div class="form-group">
                 <label for="exptDate"> Date Of the Experiment (YYYY-MM-DD)</label><br/>
                   {{form.exptDate}}
                 {% comment %} <input type="password" class="form-control" id="password" placeholder="Password"><br/> {% endcomment %}
             </div>
+            <br/>
             <div class="form-group">
                 <label for="startTime"> Start Time (HH:MM:SS)</label><br/>
                   {{form.startTime}}
                 {% comment %} <input type="password" class="form-control" id="password" placeholder="Password"><br/> {% endcomment %}
             </div>
+            <br/>
             <div class="form-group">
                 <label for=""> End Time (HH:MM:SS)</label><br/>
                   {{form.endTime}}
                 {% comment %} <input type="password" class="form-control" id="password" placeholder="Password"><br/> {% endcomment %}
             </div>
+            <br/>
             <div class="form-group">
                 <label for="numberOfSeats"> Number Of Seats </label><br/>
                   {{form.numberOfSeats}}
                 {% comment %} <input type="password" class="form-control" id="password" placeholder="Password"><br/> {% endcomment %}
             </div>
+            <br/>
               <button type="submit" class="btn btn-primary btn-block">Add Slot</button>
+              <br/>
+          </div>
 </form>
 {%else%}
 Access Denied. Only Staff Status can Access This Link.

@@ -9,7 +9,7 @@
   {% if user.is_staff %}Staff{% else %}User{% endif %}</h3>
 
   {% if user.is_staff %}
-    <h1 align = "center">Pending Requests</h1>
+    <h1 style="text-align:center">Pending Requests</h1>
     <div class="accordion" id="accordionExample">
       {% for order in pendingOrders %}
   

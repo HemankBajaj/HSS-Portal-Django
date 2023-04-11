@@ -1,7 +1,9 @@
 {% extends 'base.html' %} {% block title %}My Slots{% endblock title %} 
 
 {% block body %}
-<h1 align="center">Upcoming Experiments</h1>
+
+<h1 style="text-align:center">Upcoming Experiments</h1>
+<br/>
 <div class="accordion" id="accordionExample">
     {% for slot in upcomingSlots %}
 
@@ -26,23 +28,25 @@
             {% if slot not in upcomingSlots %} 
             <form action="bookSlot/{{slot.id}}" method="POST" id="bookSlot">
                 {% csrf_token %}
-                <input type="submit" value = "Book Slot" class="btn btn-success">
+                <input type="submit" value = "Book Slot" class="btn btn-success order-btn">
+                <br/>
             </form> 
             {% else %}
             <form action="unbookSlot/{{slot.id}}" method="POST" id="bookSlot">
                 {% csrf_token %}
-                <input type="submit" value = "unBook Slot" class="btn btn-danger">
+                <input type="submit" value = "Unbook Slot" class="btn btn-danger order-btn"><br/>
             </form> 
             {% endif %}
             {% endif %}
             {% if user.is_staff %}
             <form action="updateSlot/{{slot.id}}" method="POST" id="editSlot" name="update">
                 {% csrf_token %}
-                <input type="submit" value = "Edit Slot" class="btn btn-warning">
+                <input type="submit" value="Edit Slot" class="btn btn-warning order-btn">
+                <br/>
             </form> 
             <form action="deleteSlot/{{slot.id}}" method="POST" id="deleteSlot">
                 {% csrf_token %}
-                <input type="submit" value = "Delete Slot" class="btn btn-danger">
+                <input type="submit" value="Delete Slot" class="btn btn-danger order-btn">
             </form> 
             {% endif %}
             {% comment %} {% if slot in activeSlots %} Booked ! YAY!{% endif %} {% endcomment %}

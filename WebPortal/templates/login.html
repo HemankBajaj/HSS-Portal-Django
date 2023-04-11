@@ -40,18 +40,22 @@
         <br/><br/>
 		<div class="row justify-content-center">
 			<div class="col-lg-6 col-md-8 col-sm-10">
+        <h2 class="text-center">Login</h2>
 				<form method = "POST" action="login">
           {%csrf_token%}
+          <br/>
 					<div class="form-group">
 						<label for="username">Username</label><br/>
             {{form.username}}
 						{% comment %} <input type="text" class="form-control" id="texg" placeholder="Enter Username"><br/> {% endcomment %}
 					</div>
+          <br/>
 					<div class="form-group">
 						<label for="password">Password</label><br/>
             {{form.password}}
 						{% comment %} <input type="password" class="form-control" id="password" placeholder="Password"><br/> {% endcomment %}
 					</div>
+          <br/>
 					<button type="submit" class="btn btn-primary btn-block">Login</button>
 				</form>
 			</div>
